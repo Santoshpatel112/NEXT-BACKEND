@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const users=[
+export const users=[
   {
     "id": 1,
     "roll": "CS2021001",
