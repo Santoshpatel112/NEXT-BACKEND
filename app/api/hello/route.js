@@ -79,10 +79,16 @@ export async function GET(request) {
   const name = searchParams.get("name");
   const branch=searchParams.get("branch");
   console.log(name,branch);
-
+  let filterUser=users;
+  if(branch){
+    filterUser=filterUser.filter((user)=>user.branch.toLocaleLowerCase().includes(branch.toLocaleLowerCase()))
+  }
+  if(name){
+    filterUser=filterUser.filter((user)=>user.name.toLocaleLowerCase().includes(name.toLocaleLowerCase()));
+  }
     return NextResponse.json({
         sucess:"true",
-        data :users,
+        data :filterUser,
         len:users.length
     },{status:201})
 }
