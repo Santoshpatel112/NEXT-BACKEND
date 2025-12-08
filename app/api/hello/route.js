@@ -73,7 +73,13 @@ export const users=[
   }
 ]
 
-export async function GET() {
+export async function GET(request) {
+  // Search Parameters
+  const searchParams = request.nextUrl.searchParams;
+  const name = searchParams.get("name");
+  const branch=searchParams.get("branch");
+  console.log(name,branch);
+
     return NextResponse.json({
         sucess:"true",
         data :users,
